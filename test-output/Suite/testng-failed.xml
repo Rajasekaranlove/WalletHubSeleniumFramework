@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite data-provider-thread-count="3" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="FaceBook Tests(failed)">
+    <classes>
+      <class name="testScripts.Facebook.LoginTestScripts">
+        <methods>
+          <include name="initInstance"/>
+          <include name="validateFacebookLoginFunctionality" invocation-numbers="1"/>
+          <include name="afterMethod"/>
+        </methods>
+      </class> <!-- testScripts.Facebook.LoginTestScripts -->
+    </classes>
+  </test> <!-- FaceBook Tests(failed) -->
+</suite> <!-- Failed suite [Suite] -->
