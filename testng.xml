@@ -3,10 +3,16 @@
 
 <suite name="Suite" data-provider-thread-count="3">
 
-	<test thread-count="5" name="FaceBook Tests">
+	<!-- <test thread-count="5" name="FaceBook Tests">
 		<classes>
 			<class name="testScripts.Facebook.LoginTestScripts" />
 			<class name="testScripts.Facebook.PostStatusTestScripts" />
+		</classes>
+	</test> -->
+
+	<test thread-count="5" name="WalletHub Tests">
+		<classes>
+			<class name="testScripts.walletHub.PostReviewScripts" />
 		</classes>
 	</test> <!-- Test -->
 

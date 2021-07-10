@@ -82,6 +82,17 @@ public class TestNGSupportBaseClass{
 		return testData;
 	}
 
+	
+	
+	@DataProvider(parallel=true)
+	public Object[][] walletHubPostReviewsTestData()
+	{
+		Object[][] testData = ReadFromExcel.readExcelTestData("QA_WalletHub_TestData.xlsx", "walletHubPostReviews");
+		return testData;
+	}
+
+
+	
 
 	@BeforeSuite(alwaysRun=true)
 	public void initInstance(ITestContext context) throws IOException
@@ -110,6 +121,6 @@ public class TestNGSupportBaseClass{
 				CaptureScreenshot.takeSnapShot(driver, folderName, result.getMethod().getMethodName());
 		}
 
-		WebDriverUtils.getInstance().removeDriver();
+		//WebDriverUtils.getInstance().removeDriver();
 	}
 }

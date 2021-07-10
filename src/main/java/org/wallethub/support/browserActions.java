@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -50,6 +51,40 @@ public class browserActions {
 			
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].click();", element);
+			
+		} catch (NoSuchElementException e) {
+			long elapsedTime = StopWatch.elapsedTime(startTime);
+			log.error(elementDescription + " not found in page!!" + "Waited Duration: " + elapsedTime);
+			throw new Exception(elementDescription + " not found in page!!" + "Waited Duration: " + elapsedTime);
+		}
+	}
+	
+	
+	public static void scroll_into_view(WebElement element, WebDriver driver, String elementDescription) throws Exception {
+		long startTime = StopWatch.startTime();
+		try {
+			if (!waitForElement(driver, element, elementDescription))
+				throw new Exception(elementDescription + " not found in page!!");
+			
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+			
+		} catch (NoSuchElementException e) {
+			long elapsedTime = StopWatch.elapsedTime(startTime);
+			log.error(elementDescription + " not found in page!!" + "Waited Duration: " + elapsedTime);
+			throw new Exception(elementDescription + " not found in page!!" + "Waited Duration: " + elapsedTime);
+		}
+	}
+	
+	
+	public static void mouse_hover_action(WebElement element, WebDriver driver, String elementDescription) throws Exception {
+		long startTime = StopWatch.startTime();
+		try {
+			if (!waitForElement(driver, element, elementDescription))
+				throw new Exception(elementDescription + " not found in page!!");
+			
+			Actions actions = new Actions(driver);
+			actions.moveToElement(element).build().perform();
 			
 		} catch (NoSuchElementException e) {
 			long elapsedTime = StopWatch.elapsedTime(startTime);

@@ -1,4 +1,0 @@
-[TestNG-PoolService-0] 16:00:33,904 INFO  testScripts.Facebook.PostStatusTestScripts  - 1. Lauched the website: https://en-gb.facebook.com/
-[TestNG-PoolService-0] 16:00:38,181 INFO  testScripts.Facebook.PostStatusTestScripts  - 2. Logged in Successfully
-[TestNG-PoolService-0] 16:00:39,240 INFO  testScripts.Facebook.PostStatusTestScripts  - 3. Home Page is loaded
-[TestNG-PoolService-0] 16:00:42,851 INFO  testScripts.Facebook.PostStatusTestScripts  - 4. Posted a status successfully in Facebook
