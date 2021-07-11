@@ -2,6 +2,7 @@ package org.wallethub.support;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class browserActions {
 
-	public static int maxElementWait = 10;
+	public static int maxElementWait = 90;
 
 	protected static Logger log=null;
 
@@ -142,12 +143,32 @@ public class browserActions {
 
 		return textFromHTMLAttribute;
 	}
+	
+	/**
+	 * 
+	 * @param element
+	 * @param driver
+	 * @param elementDescription
+	 * @throws Exception
+	 */
+	public static void invisibility_of_element_present(By locator, WebDriver driver, String elementDescription) throws Exception {
+		long startTime = StopWatch.startTime();
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 90);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+		} catch (NoSuchElementException e) {
+			long elapsedTime = StopWatch.elapsedTime(startTime);
+			log.error(elementDescription + " is still visible in page!!" + "Waited Duration: " + elapsedTime);
+			throw new Exception(elementDescription + " is still visible in page!!" + "Waited Duration: " + elapsedTime);
+		}
+	}
 
 
 	/**
 	 * 
 	 * @param driver
 	 * @return
+	 * @throws InterruptedException 
 	 */
 	public static boolean waitForJStoLoad(WebDriver driver) {
 		WebDriverWait wait = new WebDriverWait(driver, maxElementWait);
@@ -176,6 +197,8 @@ public class browserActions {
 		};
 		return wait.until(jQueryLoad) && wait.until(jsLoad);
 	}
+	
+	
 	
 	/**
 	 * 
